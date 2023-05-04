@@ -5,6 +5,7 @@ namespace IndividualQuest
 {
     public partial class Form1 : Form
     {
+        const int MaxArrayLength = 30, MinValueArray = -100, MaxValueArray = 100;
         public Form1()
         {
             InitializeComponent();
@@ -12,19 +13,22 @@ namespace IndividualQuest
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dataGridView1.RowCount = 30;
+            dataGridView1.RowCount = MaxArrayLength;
             dataGridView1.ColumnCount = 1;
-            dataGridView2.RowCount = 30;
+            dataGridView2.RowCount = MaxArrayLength;
             dataGridView2.ColumnCount = 1;
 
-            double[] arr = new double[30];
+            //array filling
+            double[] arr = new double[MaxArrayLength];
             Random r = new Random();
-            for (int i = 0; i < 30; i++)
-                arr[i] = r.Next(-100, 100);
+            for (int i = 0; i < MaxArrayLength; i++)
+                arr[i] = r.Next(MinValueArray, MaxValueArray);
 
-                for (int i = 0; i < 30; i++)
+            // output array
+                for (int i = 0; i < MaxArrayLength; i++)
                     dataGridView1.Rows[i].Cells[0].Value = Convert.ToString(arr[i]);
 
+            //find value in array
             int count = 0, geometricMean = 1;
 
             for (int i1 = 0; i1 < arr.Length; i1++)
@@ -41,7 +45,8 @@ namespace IndividualQuest
                 if (i % 2 - 1 == 0 & arr[i] > 0)
                     arr[i] = Math.Pow(geometricMean, (double)1 / count);
 
-            for (int i = 0; i < 30; i++)
+            //output modifed array
+            for (int i = 0; i < MaxArrayLength; i++)
                 dataGridView2.Rows[i].Cells[0].Value = Convert.ToString(arr[i]);
         }
     }
