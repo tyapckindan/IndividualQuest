@@ -31,13 +31,13 @@ namespace IndividualQuest
             //find value in array
             int count = 0, geometricMean = 1;
 
-            for (int i1 = 0; i1 < arr.Length; i1++)
+            for (int i = 0; i < arr.Length; i++)
             {
-                int i = (int)arr[i1];
-                if (i < 0)
+                int j = (int)arr[i];
+                if (j < 0)
                 {
                     count++;
-                    geometricMean *= i;
+                    geometricMean *= j;
                 }
             }
 
