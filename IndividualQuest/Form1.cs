@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace IndividualQuest
@@ -10,7 +12,32 @@ namespace IndividualQuest
         {
             InitializeComponent();
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                //dataGridView1.Rows.Clear();
+                label1.Text = openFileDialog1.FileName;
 
+                StreamReader sr = File.OpenText(openFileDialog1.FileName);
+
+                string line = sr.ReadLine();
+
+                int l = 0;
+                while (line != null)
+                {
+                    dataGridView1.Rows[l].Cells[0].Value = line;
+                    l++;
+                    line = sr.ReadLine();
+                }
+                dataGridView1.RowCount = l;
+
+                sr.Close();
+
+                for (int i = 0; i < l; i++)
+                    dataGridView1.Rows[i].HeaderCell.Value = i + 1 + "";
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             dataGridView1.RowCount = MaxArrayLength;
@@ -47,7 +74,13 @@ namespace IndividualQuest
 
             //output modifed array
             for (int i = 0; i < MaxArrayLength; i++)
+            {
                 dataGridView2.Rows[i].Cells[0].Value = Convert.ToString(arr[i]);
+
+                // array's numbering
+                dataGridView1.Rows[i].HeaderCell.Value = i + 1 + "";
+                dataGridView2.Rows[i].HeaderCell.Value = i + 1 + "";
+            }
         }
     }
 }
