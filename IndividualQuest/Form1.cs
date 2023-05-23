@@ -14,6 +14,7 @@ namespace IndividualQuest
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            //read array in the file
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 label1.Text = openFileDialog1.FileName;
@@ -23,6 +24,7 @@ namespace IndividualQuest
                 string line = sr.ReadLine();
 
                 int fileArrayLength = 0;
+
                 while (line != null)
                 {
                     fileArrayLength++;
@@ -31,11 +33,9 @@ namespace IndividualQuest
 
                 dataGridView1.RowCount = fileArrayLength;
 
-                sr.Close();
+                sr = File.OpenText(openFileDialog1.FileName);
 
-                StreamReader sri = File.OpenText(openFileDialog1.FileName);
-
-                line = sri.ReadLine();
+                line = sr.ReadLine();
 
                 int l = 0;
 
@@ -43,10 +43,10 @@ namespace IndividualQuest
                 {
                     l++;
                     dataGridView1.Rows[l - 1].Cells[0].Value = line;
-                    line = sri.ReadLine();
+                    line = sr.ReadLine();
                 }
 
-                sri.Close();
+                sr.Close();
 
                 for (int i = 0; i < l; i++)
                     dataGridView1.Rows[i].HeaderCell.Value = i + 1 + "";
@@ -65,7 +65,7 @@ namespace IndividualQuest
             for (int i = 0; i < MaxArrayLength; i++)
                 arr[i] = r.Next(MinValueArray, MaxValueArray);
 
-            // output array
+            //output array
                 for (int i = 0; i < MaxArrayLength; i++)
                     dataGridView1.Rows[i].Cells[0].Value = Convert.ToString(arr[i]);
 
@@ -91,7 +91,7 @@ namespace IndividualQuest
             {
                 dataGridView2.Rows[i].Cells[0].Value = Convert.ToString(arr[i]);
 
-                // array's numbering
+                //array's numbering
                 dataGridView1.Rows[i].HeaderCell.Value = i + 1 + "";
                 dataGridView2.Rows[i].HeaderCell.Value = i + 1 + "";
             }
