@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace IndividualQuest
@@ -12,7 +11,7 @@ namespace IndividualQuest
         {
             InitializeComponent();
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void ReadArrFileBtnClick(object sender, EventArgs e)
         {
             //read array in the file
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -32,6 +31,7 @@ namespace IndividualQuest
                 }
 
                 dataGridView1.RowCount = fileArrayLength;
+                dataGridView2.RowCount = fileArrayLength;
 
                 sr = File.OpenText(openFileDialog1.FileName);
 
@@ -48,8 +48,37 @@ namespace IndividualQuest
 
                 sr.Close();
 
-                for (int i = 0; i < l; i++)
+                //array filling
+                double[] arr = new double[fileArrayLength];
+                for (int i = 0; i < fileArrayLength; i++)
+                    arr[i] = Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+
+                //find value in file Array
+                int count = 0, geometricMean = 1;
+
+                for (int i = 0; i < fileArrayLength; i++)
+                {
+                    int j = (int)arr[i];
+                    if (j < 0)
+                    {
+                        count++;
+                        geometricMean *= j;
+                    }
+                }
+
+                for (int i = 0; i < fileArrayLength; i++)
+                    if (i % 2 - 1 == 0 & arr[i] > 0)
+                        arr[i] = Math.Pow(geometricMean, (double)1 / count);
+
+                //output modifed array
+                for (int i = 0; i < fileArrayLength; i++)
+                {
+                    dataGridView2.Rows[i].Cells[0].Value = Convert.ToString(arr[i]);
+
+                    //array's numbering
                     dataGridView1.Rows[i].HeaderCell.Value = i + 1 + "";
+                    dataGridView2.Rows[i].HeaderCell.Value = i + 1 + "";
+                }
             }
         }
         private void Form1_Load(object sender, EventArgs e)
