@@ -16,23 +16,37 @@ namespace IndividualQuest
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                //dataGridView1.Rows.Clear();
                 label1.Text = openFileDialog1.FileName;
 
                 StreamReader sr = File.OpenText(openFileDialog1.FileName);
 
                 string line = sr.ReadLine();
 
-                int l = 0;
+                int fileArrayLength = 0;
                 while (line != null)
                 {
-                    dataGridView1.Rows[l].Cells[0].Value = line;
-                    l++;
+                    fileArrayLength++;
                     line = sr.ReadLine();
                 }
-                dataGridView1.RowCount = l;
+
+                dataGridView1.RowCount = fileArrayLength;
 
                 sr.Close();
+
+                StreamReader sri = File.OpenText(openFileDialog1.FileName);
+
+                line = sri.ReadLine();
+
+                int l = 0;
+
+                while (line != null)
+                {
+                    l++;
+                    dataGridView1.Rows[l - 1].Cells[0].Value = line;
+                    line = sri.ReadLine();
+                }
+
+                sri.Close();
 
                 for (int i = 0; i < l; i++)
                     dataGridView1.Rows[i].HeaderCell.Value = i + 1 + "";
