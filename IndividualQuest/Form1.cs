@@ -11,12 +11,27 @@ namespace IndividualQuest
         {
             InitializeComponent();
         }
+
+        private void SaveArrFileBtnClick(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                //save modifed arr in the user file
+                FileStream fs = new FileStream(openFileDialog1.FileName, FileMode.Create);
+                StreamWriter sw = new StreamWriter(fs);
+
+                for (int i = 0; i < dataGridView2.Rows.Count; i++)
+                    sw.WriteLine(dataGridView2.Rows[i].Cells[0].Value);
+                sw.Close();
+                MessageBox.Show("Данные сохранены!");
+            }
+        }
+
         private void ReadArrFileBtnClick(object sender, EventArgs e)
         {
             //read array in the file
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                label1.Text = openFileDialog1.FileName;
 
                 StreamReader sr = File.OpenText(openFileDialog1.FileName);
 
