@@ -41,6 +41,9 @@
             this.excelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.arrayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.outputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.numberingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -92,7 +95,8 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.actionsToolStripMenuItem});
+            this.actionsToolStripMenuItem,
+            this.arrayToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(487, 28);
@@ -105,8 +109,8 @@
             this.openFileToolStripMenuItem,
             this.excelToolStripMenuItem});
             this.actionsToolStripMenuItem.Name = "actionsToolStripMenuItem";
-            this.actionsToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
-            this.actionsToolStripMenuItem.Text = "Menu";
+            this.actionsToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.actionsToolStripMenuItem.Text = "File";
             // 
             // openFileToolStripMenuItem
             // 
@@ -114,7 +118,7 @@
             this.OpenToolStripMenuItem,
             this.SaveToolStripMenuItem});
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(126, 26);
             this.openFileToolStripMenuItem.Text = "File";
             // 
             // OpenToolStripMenuItem
@@ -137,22 +141,45 @@
             this.saveToolStripMenuItem1,
             this.saveToolStripMenuItem2});
             this.excelToolStripMenuItem.Name = "excelToolStripMenuItem";
-            this.excelToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.excelToolStripMenuItem.Size = new System.Drawing.Size(126, 26);
             this.excelToolStripMenuItem.Text = "Excel";
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(128, 26);
             this.saveToolStripMenuItem1.Text = "Open";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.OpenExcelToolStripMenuItem1_Click);
             // 
             // saveToolStripMenuItem2
             // 
             this.saveToolStripMenuItem2.Name = "saveToolStripMenuItem2";
-            this.saveToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.saveToolStripMenuItem2.Size = new System.Drawing.Size(128, 26);
             this.saveToolStripMenuItem2.Text = "Save";
             this.saveToolStripMenuItem2.Click += new System.EventHandler(this.SaveExcelToolStripMenuItem2_Click);
+            // 
+            // arrayToolStripMenuItem
+            // 
+            this.arrayToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.outputToolStripMenuItem,
+            this.numberingToolStripMenuItem});
+            this.arrayToolStripMenuItem.Name = "arrayToolStripMenuItem";
+            this.arrayToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
+            this.arrayToolStripMenuItem.Text = "Array";
+            // 
+            // outputToolStripMenuItem
+            // 
+            this.outputToolStripMenuItem.Name = "outputToolStripMenuItem";
+            this.outputToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.outputToolStripMenuItem.Text = "Output";
+            this.outputToolStripMenuItem.Click += new System.EventHandler(this.OutputArrayToolStripMenuItem_Click);
+            // 
+            // numberingToolStripMenuItem
+            // 
+            this.numberingToolStripMenuItem.Name = "numberingToolStripMenuItem";
+            this.numberingToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.numberingToolStripMenuItem.Text = "Numbering";
+            this.numberingToolStripMenuItem.Click += new System.EventHandler(this.NumberingArrayToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -192,6 +219,9 @@
         private System.Windows.Forms.ToolStripMenuItem excelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem arrayToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem outputToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem numberingToolStripMenuItem;
     }
 }
 
