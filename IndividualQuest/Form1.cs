@@ -50,7 +50,22 @@ namespace IndividualQuest
 
         private void OpenExcelToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            OpenFileDialog opf = new OpenFileDialog();
+            opf.Filter = "Файл Excel|*.XLSX;*.XLS";
+            opf.ShowDialog();
+            System.Data.DataTable tb = new System.Data.DataTable();
+            string filename = opf.FileName;
+ 
+            Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook ExcelWorkBook;
+            Microsoft.Office.Interop.Excel.Worksheet ExcelWorkSheet;
+ 
+            ExcelWorkBook = ExcelApp.Workbooks.Open(filename, 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false,
+                false, 0, true, 1, 0);
+            ExcelWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)ExcelWorkBook.Worksheets.get_Item(1);
 
+            for (int i = 1; i < 30 + 1; i++)
+                dataGridView1.Rows[i - 1].Cells[0].Value = ExcelApp.Cells[i, 1].Value;
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
