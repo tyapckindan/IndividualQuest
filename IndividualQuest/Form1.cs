@@ -64,8 +64,40 @@ namespace IndividualQuest
                 false, 0, true, 1, 0);
             ExcelWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)ExcelWorkBook.Worksheets.get_Item(1);
 
-            for (int i = 1; i < 30 + 1; i++)
+            for (int i = 1; i < MaxArrayLength + 1; i++)
                 dataGridView1.Rows[i - 1].Cells[0].Value = ExcelApp.Cells[i, 1].Value;
+
+            //array filling
+            double[] arr = new double[30];
+            for (int i = 0; i < MaxArrayLength; i++)
+                arr[i] = Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
+
+            //find value in file Array
+            int count = 0, geometricMean = 1;
+
+            for (int i = 0; i < MaxArrayLength; i++)
+            {
+                int j = (int)arr[i];
+                if (j < 0)
+                {
+                    count++;
+                    geometricMean *= j;
+                }
+            }
+
+            for (int i = 0; i < MaxArrayLength; i++)
+                if (i % 2 - 1 == 0 & arr[i] > 0)
+                    arr[i] = Math.Pow(geometricMean, (double)1 / count);
+
+            //output modifed array
+            for (int i = 0; i < MaxArrayLength; i++)
+            {
+                dataGridView2.Rows[i].Cells[0].Value = Convert.ToString(arr[i]);
+
+                //array's numbering
+                dataGridView1.Rows[i].HeaderCell.Value = i + 1 + "";
+                dataGridView2.Rows[i].HeaderCell.Value = i + 1 + "";
+            }
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
