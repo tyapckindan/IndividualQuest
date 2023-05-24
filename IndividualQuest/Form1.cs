@@ -12,7 +12,7 @@ namespace IndividualQuest
             InitializeComponent();
         }
 
-        private void SaveFileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -27,7 +27,7 @@ namespace IndividualQuest
             }
         }
 
-        private void OpenFileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //read array in the file
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
