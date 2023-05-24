@@ -1,6 +1,15 @@
 ﻿using System;
+using System.Data;
+using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using Microsoft.Office.Interop.Excel;
 
 namespace IndividualQuest
 {
@@ -25,6 +34,34 @@ namespace IndividualQuest
                 MessageBox.Show("Данные сохранены!");
             }
         }
+
+        private void SaveExcelToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            //App
+            Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbook ExcelWorkBook;
+            Microsoft.Office.Interop.Excel.Worksheet ExcelWorkSheet;
+
+            //Book
+            ExcelWorkBook = ExcelApp.Workbooks.Add(System.Reflection.Missing.Value);
+
+            //Table
+            ExcelWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)ExcelWorkBook.Worksheets.get_Item(1);
+
+            for (int i = 0; i < dataGridView2.Rows.Count; i++)
+                for (int j = 0; j < dataGridView2.ColumnCount; j++)
+                    ExcelApp.Cells[i + 1, j + 1] = dataGridView2.Rows[i].Cells[j].Value;
+
+            //Calling the created excel
+            ExcelApp.Visible = true;
+            ExcelApp.UserControl = true;
+        }
+
+        private void OpenExcelToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //read array in the file
