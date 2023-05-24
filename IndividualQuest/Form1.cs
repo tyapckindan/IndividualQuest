@@ -50,6 +50,7 @@ namespace IndividualQuest
 
         private void OpenExcelToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            //Open Excel file
             OpenFileDialog opf = new OpenFileDialog();
             opf.Filter = "Файл Excel|*.XLSX;*.XLS";
             opf.ShowDialog();
@@ -98,6 +99,11 @@ namespace IndividualQuest
             //output modifed array
             for (int i = 0; i < MaxArrayLength; i++)
                 dataGridView2.Rows[i].Cells[0].Value = Convert.ToString(arr[i]);
+
+            //delete zero
+            for (int i = 0; i < MaxArrayLength; i++)
+                if (Convert.ToDouble(dataGridView2.Rows[i].Cells[0].Value) == 0)
+                    dataGridView2.Rows[i].Cells[0].Value = "";
         }
 
         private void NumberingArrayToolStripMenuItem_Click(object sender, EventArgs e)
