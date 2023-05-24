@@ -25,7 +25,6 @@ namespace IndividualQuest
                 MessageBox.Show("Данные сохранены!");
             }
         }
-
         private void SaveExcelToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             //App
@@ -47,7 +46,6 @@ namespace IndividualQuest
             ExcelApp.Visible = true;
             ExcelApp.UserControl = true;
         }
-
         private void OpenExcelToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             //Open Excel file
@@ -68,7 +66,6 @@ namespace IndividualQuest
             for (int i = 1; i < MaxArrayLength + 1; i++)
                 dataGridView1.Rows[i - 1].Cells[0].Value = ExcelApp.Cells[i, 1].Value;
         }
-
         private void OutputArrayToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataGridView2.RowCount = MaxArrayLength;
@@ -115,7 +112,6 @@ namespace IndividualQuest
                 dataGridView2.Rows[i].HeaderCell.Value = i + 1 + "";
             }
         }
-
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //read array in the file
