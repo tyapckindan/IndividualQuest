@@ -11,12 +11,11 @@ namespace IndividualQuest
         {
             InitializeComponent();
         }
-
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                //save modifed arr in the user file
+                //save modifed array in the user file
                 FileStream fs = new FileStream(openFileDialog1.FileName, FileMode.Create);
                 StreamWriter sw = new StreamWriter(fs);
 
@@ -26,7 +25,6 @@ namespace IndividualQuest
                 MessageBox.Show("Данные сохранены!");
             }
         }
-
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //read array in the file
